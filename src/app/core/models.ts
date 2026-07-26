@@ -88,3 +88,68 @@ export interface Methodology {
   references: string[];
   limitations: string[];
 }
+
+export interface Astrophysics {
+  exoplanet_id: number;
+  exoplanet_name: string;
+  host_star: string;
+  stellar_luminosity_solar: number | null;
+  habitable_zone: {
+    available: boolean;
+    reason?: string;
+    teff_used_k?: number;
+    optimistic_inner_au?: number;
+    conservative_inner_au?: number;
+    conservative_outer_au?: number;
+    optimistic_outer_au?: number;
+    planet_semi_major_axis_au?: number | null;
+    in_conservative_hz?: boolean | null;
+    in_optimistic_hz?: boolean | null;
+    relative_position?: number | null;
+    reference?: string;
+  };
+  energy_budget: {
+    available: boolean;
+    instellation_earth_flux?: number;
+    instellation_w_m2?: number;
+    equilibrium_temp_bond0_k?: number;
+    equilibrium_temp_bond0_3_k?: number;
+    equilibrium_temp_bond0_7_k?: number;
+    catalog_equilibrium_temp_k?: number;
+  };
+  planet_physics: {
+    surface_gravity_g?: number;
+    surface_gravity_ms2?: number;
+    escape_velocity_kms?: number;
+    density_g_cm3?: number;
+  };
+  earth_similarity_index: {
+    available: boolean;
+    esi?: number;
+    components?: Record<string, number>;
+    parameters_used?: number;
+    reference?: string;
+  };
+  galactic_position: {
+    available: boolean;
+    ra_deg?: number;
+    dec_deg?: number;
+    galactic_longitude_deg?: number;
+    galactic_latitude_deg?: number;
+    distance_pc?: number;
+    distance_light_years?: number;
+  };
+  observability: {
+    transit_depth_ppm?: number;
+    transit_depth_percent?: number;
+    rv_semi_amplitude_ms?: number;
+    orbital_velocity_kms?: number;
+  };
+  stellar_light: {
+    available: boolean;
+    effective_temp_k?: number;
+    wien_peak_nm?: number;
+    approx_color?: string;
+  };
+  disclaimer: string;
+}

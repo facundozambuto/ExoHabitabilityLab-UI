@@ -5,11 +5,12 @@ import { ApiService } from '../core/api.service';
 import { Exoplanet, HabitabilityScore, ArtResult } from '../core/models';
 import { PlanetOrbComponent } from '../shared/planet-orb.component';
 import { ScoreRingComponent } from '../shared/score-ring.component';
+import { AstroLabComponent } from '../shared/astro-lab.component';
 import { num, planetType, scoreColor } from '../shared/utils';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterLink, PlanetOrbComponent, ScoreRingComponent],
+  imports: [CommonModule, RouterLink, PlanetOrbComponent, ScoreRingComponent, AstroLabComponent],
   template: `
     <div class="page container" *ngIf="planet() as p">
       <a routerLink="/explore" class="back muted">← Back to explore</a>
@@ -108,6 +109,9 @@ import { num, planetType, scoreColor } from '../shared/utils';
         </div>
         <p class="disclaimer muted">{{ s.scientific_disclaimer }}</p>
       </section>
+
+      <!-- Astrophysics Lab (Astropy) -->
+      <app-astro-lab [planetId]="p.id" />
     </div>
 
     <div class="page container" *ngIf="loading()"><div class="center-load"><div class="spinner"></div>Loading world…</div></div>

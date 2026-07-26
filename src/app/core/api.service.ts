@@ -10,6 +10,7 @@ import {
   RankingResponse,
   ArtResult,
   Methodology,
+  Astrophysics,
 } from './models';
 
 export interface ListFilters {
@@ -27,6 +28,7 @@ export class ApiService {
 
   // Simple in-memory caches so navigating around the app stays snappy.
   private scoreCache = new Map<number, Observable<HabitabilityScore>>();
+  private astroCache = new Map<number, Observable<Astrophysics>>();
   private ranking$?: Observable<RankingResponse>;
   private methodology$?: Observable<Methodology>;
 
@@ -72,6 +74,16 @@ export class ApiService {
         .pipe(shareReplay(1));
     }
     return this.methodology$;
+  }
+
+  astrophysics(id: number): Observable<Astrophysics> {
+    if (!this.astroCache.has(id)) {
+      this.astroCache.set(
+        id,
+        this.http.get<Astrophysics>(`${API_BASE}/exoplanets/${id}/astrophysics`).pipe(shareReplay(1)),
+      );
+    }
+    return this.astroCache.get(id)!;
   }
 
   generateArt(id: number, style: string, format = 'landscape'): Observable<ArtResult> {
