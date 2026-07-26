@@ -1,59 +1,45 @@
-# ExohabitabilityUi
+# 🪐 ExoHabitabilityLab · UI
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.27.
+> Space-themed interactive frontend for exploring exoplanet habitability.
 
-## Development server
+A single-page **Angular 19** application that consumes the
+[ExoHabitabilityLab API](https://github.com/facundozambuto/ExoHabitabilityLab)
+to let you explore real exoplanets from the NASA Exoplanet Archive and see how
+habitable they might be.
 
-To start a local development server, run:
+**Live:** https://exohabitability-ui.vercel.app
 
-```bash
-ng serve
-```
+## ✨ Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Animated starfield** background with twinkling stars and shooting stars.
+- **Generative ambient soundscape** — a subtle, cinematic drone synthesised with
+  the Web Audio API (no copyrighted music), pausable from the navbar.
+- **Home** — hero, plain-language explanation and featured worlds.
+- **Top 10** — habitability leaderboard powered by the API ranking endpoint.
+- **Explore** — search and filter the full catalogue by name, star type and size.
+- **Planet detail** — full physical/orbital/stellar data, the 13-factor
+  habitability breakdown, and **AI image generation** (Flux via Pollinations).
+- **Compare** — put up to three worlds side by side with best-value highlighting.
+- **Methodology** — the science behind the scoring, references and limitations.
 
-## Code scaffolding
+## 🛠 Stack
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Angular 19 (standalone components, signals, lazy-loaded routes)
+- Pure CSS space theme (no UI framework)
+- Canvas starfield + Web Audio API
+- Deployed on Vercel
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 🚀 Development
 
 ```bash
-ng test
+npm install
+npm start        # ng serve → http://localhost:4200
+npm run build    # production build to dist/exohabitability-ui/browser
 ```
 
-## Running end-to-end tests
+The API base URL is configured in `src/app/core/config.ts`.
 
-For end-to-end (e2e) testing, run:
+## ⚠️ Disclaimer
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Habitability scores are **probabilistic indicators** based on current data — not a
+detection of life. This is an educational and exploratory tool.
